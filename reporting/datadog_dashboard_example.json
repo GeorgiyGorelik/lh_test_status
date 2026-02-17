@@ -1,0 +1,720 @@
+{
+	"title": "UI Performance Overview",
+	"description": "A dashboard with key performance indicators for website performance.",
+	"widgets": [
+		{
+			"id": 5039576083858494,
+			"definition": {
+				"title": "Website Performance Metrics",
+				"type": "query_table",
+				"requests": [
+					{
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.total_blocking_time{$application_name, $step_name} by {step_name}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query2",
+								"query": "avg:website.performance.cumulative_layout_shift{$application_name, $step_name} by {step_name}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query3",
+								"query": "avg:website.performance.interaction_to_next_paint{$application_name, $step_name} by {step_name}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query4",
+								"query": "avg:website.performance.first_contentful_paint{$application_name, $step_name} by {step_name}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query5",
+								"query": "avg:website.performance.speed_index{$application_name, $step_name} by {step_name}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query6",
+								"query": "avg:website.performance.largest_contentful_paint{$application_name, $step_name} by {step_name}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query7",
+								"query": "avg:website.performance.interactive{$application_name, $step_name} by {step_name}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query8",
+								"query": "avg:website.performance.mainthread_work_breakdown{$application_name, $step_name} by {step_name}",
+								"aggregator": "avg"
+							},
+							{
+								"data_source": "metrics",
+								"name": "query9",
+								"query": "avg:website.performance.network_requests{$application_name, $step_name} by {step_name}",
+								"aggregator": "avg"
+							}
+						],
+						"response_format": "scalar",
+						"formulas": [
+							{
+								"cell_display_mode": "bar",
+								"formula": "query1",
+								"alias": "Total Blocking Time",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								},
+								"conditional_formats": [
+									{
+										"comparator": ">",
+										"value": 600,
+										"palette": "white_on_red"
+									}
+								]
+							},
+							{
+								"cell_display_mode": "bar",
+								"formula": "query2",
+								"alias": "Cumulative Layout Shift",
+								"number_format": {},
+								"conditional_formats": [
+									{
+										"comparator": ">",
+										"value": 0.25,
+										"palette": "white_on_red"
+									}
+								]
+							},
+							{
+								"cell_display_mode": "bar",
+								"formula": "query3",
+								"alias": "Interaction To Next Paint",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								},
+								"conditional_formats": [
+									{
+										"comparator": ">",
+										"value": 500,
+										"palette": "white_on_red"
+									}
+								]
+							},
+							{
+								"cell_display_mode": "bar",
+								"formula": "query4",
+								"alias": "First Contentful Paint",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								},
+								"conditional_formats": [
+									{
+										"comparator": ">",
+										"value": 3000,
+										"palette": "white_on_red"
+									}
+								]
+							},
+							{
+								"cell_display_mode": "bar",
+								"formula": "query5",
+								"alias": "Speed Index",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								},
+								"conditional_formats": [
+									{
+										"comparator": ">",
+										"value": 5800,
+										"palette": "white_on_red"
+									}
+								]
+							},
+							{
+								"cell_display_mode": "bar",
+								"formula": "query6",
+								"alias": "Largest Contentful Paint",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								},
+								"conditional_formats": [
+									{
+										"comparator": ">",
+										"value": 4000,
+										"palette": "white_on_red"
+									}
+								]
+							},
+							{
+								"cell_display_mode": "bar",
+								"formula": "query7",
+								"alias": "Interactive",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								},
+								"conditional_formats": [
+									{
+										"comparator": ">",
+										"value": 7300,
+										"palette": "white_on_red"
+									}
+								]
+							},
+							{
+								"cell_display_mode": "bar",
+								"formula": "query8",
+								"alias": "Mainthread Work Breakdown",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							},
+							{
+								"cell_display_mode": "bar",
+								"formula": "query9",
+								"alias": "Network Requests",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							}
+						]
+					}
+				],
+				"has_search_bar": "always"
+			},
+			"layout": {
+				"x": 0,
+				"y": 0,
+				"width": 12,
+				"height": 4
+			}
+		},
+		{
+			"id": 1446330079337902,
+			"definition": {
+				"title": "Total Blocking Time [$application_name]",
+				"show_legend": false,
+				"legend_layout": "auto",
+				"legend_columns": [
+					"avg",
+					"min",
+					"max",
+					"value",
+					"sum"
+				],
+				"type": "timeseries",
+				"requests": [
+					{
+						"formulas": [
+							{
+								"formula": "query1",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							}
+						],
+						"response_format": "timeseries",
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.total_blocking_time{$step_name,$application_name}"
+							}
+						],
+						"display_type": "line"
+					}
+				],
+				"markers": [
+					{
+						"label": " poor=600ms ",
+						"value": "y = 600",
+						"display_type": "error dashed"
+					},
+					{
+						"label": " needs improvement=200ms ",
+						"value": "y = 200",
+						"display_type": "warning dashed"
+					}
+				]
+			},
+			"layout": {
+				"x": 0,
+				"y": 4,
+				"width": 4,
+				"height": 2
+			}
+		},
+		{
+			"id": 3359100689172622,
+			"definition": {
+				"title": "Cumulative Layout Shift [$application_name]",
+				"show_legend": false,
+				"legend_layout": "auto",
+				"legend_columns": [
+					"avg",
+					"min",
+					"max",
+					"value",
+					"sum"
+				],
+				"type": "timeseries",
+				"requests": [
+					{
+						"formulas": [
+							{
+								"formula": "query1",
+								"number_format": {}
+							}
+						],
+						"response_format": "timeseries",
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.cumulative_layout_shift{$step_name,$application_name}"
+							}
+						],
+						"display_type": "line"
+					}
+				],
+				"markers": [
+					{
+						"label": " poor=0.25 ",
+						"value": "y = 0.25",
+						"display_type": "error dashed"
+					},
+					{
+						"label": " needs improvement=0.1 ",
+						"value": "y = 0.1",
+						"display_type": "warning dashed"
+					}
+				]
+			},
+			"layout": {
+				"x": 4,
+				"y": 4,
+				"width": 4,
+				"height": 2
+			}
+		},
+		{
+			"id": 7980611233487675,
+			"definition": {
+				"title": "Interaction To Next Paint [$application_name]",
+				"show_legend": false,
+				"legend_layout": "auto",
+				"legend_columns": [
+					"avg",
+					"min",
+					"max",
+					"value",
+					"sum"
+				],
+				"type": "timeseries",
+				"requests": [
+					{
+						"formulas": [
+							{
+								"formula": "query1",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							}
+						],
+						"response_format": "timeseries",
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.interaction_to_next_paint{$step_name,$application_name}"
+							}
+						],
+						"display_type": "line"
+					}
+				],
+				"markers": [
+					{
+						"label": " poor=500 ms ",
+						"value": "y = 500",
+						"display_type": "error dashed"
+					},
+					{
+						"label": " needs improvement=200 ms ",
+						"value": "y = 200",
+						"display_type": "warning dashed"
+					}
+				]
+			},
+			"layout": {
+				"x": 8,
+				"y": 4,
+				"width": 4,
+				"height": 2
+			}
+		},
+		{
+			"id": 2397727809610490,
+			"definition": {
+				"title": "First Contentful Paint [$application_name]",
+				"show_legend": false,
+				"legend_layout": "auto",
+				"legend_columns": [
+					"avg",
+					"min",
+					"max",
+					"value",
+					"sum"
+				],
+				"type": "timeseries",
+				"requests": [
+					{
+						"formulas": [
+							{
+								"formula": "query1",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							}
+						],
+						"response_format": "timeseries",
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.first_contentful_paint{$step_name,$application_name}"
+							}
+						],
+						"display_type": "line"
+					}
+				],
+				"markers": [
+					{
+						"label": " poor=3sec ",
+						"value": "y = 3000",
+						"display_type": "error dashed"
+					},
+					{
+						"label": " needs improvement=1.8sec ",
+						"value": "y = 1800",
+						"display_type": "warning dashed"
+					}
+				]
+			},
+			"layout": {
+				"x": 0,
+				"y": 6,
+				"width": 4,
+				"height": 2
+			}
+		},
+		{
+			"id": 3460292782986577,
+			"definition": {
+				"title": "Speed Index [$application_name]",
+				"show_legend": false,
+				"legend_layout": "auto",
+				"legend_columns": [
+					"avg",
+					"min",
+					"max",
+					"value",
+					"sum"
+				],
+				"type": "timeseries",
+				"requests": [
+					{
+						"formulas": [
+							{
+								"formula": "query1",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							}
+						],
+						"response_format": "timeseries",
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.speed_index{$step_name,$application_name}"
+							}
+						],
+						"display_type": "line"
+					}
+				],
+				"markers": [
+					{
+						"label": " poor=5.8sec ",
+						"value": "y = 5800",
+						"display_type": "error dashed"
+					},
+					{
+						"label": " needs improvement=3.4sec ",
+						"value": "y = 3400",
+						"display_type": "warning dashed"
+					}
+				]
+			},
+			"layout": {
+				"x": 4,
+				"y": 6,
+				"width": 4,
+				"height": 2
+			}
+		},
+		{
+			"id": 3797005513189492,
+			"definition": {
+				"title": "Largest Contentful Paint [$application_name]",
+				"show_legend": false,
+				"legend_layout": "auto",
+				"legend_columns": [
+					"avg",
+					"min",
+					"max",
+					"value",
+					"sum"
+				],
+				"type": "timeseries",
+				"requests": [
+					{
+						"formulas": [
+							{
+								"formula": "query1",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							}
+						],
+						"response_format": "timeseries",
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.largest_contentful_paint{$step_name,$application_name}"
+							}
+						],
+						"display_type": "line"
+					}
+				],
+				"markers": [
+					{
+						"label": " poor=4 sec ",
+						"value": "y = 4000",
+						"display_type": "error dashed"
+					},
+					{
+						"label": " needs improvement=2.5sec ",
+						"value": "y = 2500",
+						"display_type": "warning dashed"
+					}
+				]
+			},
+			"layout": {
+				"x": 8,
+				"y": 6,
+				"width": 4,
+				"height": 2
+			}
+		},
+		{
+			"id": 7030253394614109,
+			"definition": {
+				"title": "Interactive [$application_name]",
+				"show_legend": false,
+				"legend_layout": "auto",
+				"legend_columns": [
+					"avg",
+					"min",
+					"max",
+					"value",
+					"sum"
+				],
+				"type": "timeseries",
+				"requests": [
+					{
+						"formulas": [
+							{
+								"formula": "query1",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							}
+						],
+						"response_format": "timeseries",
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.interactive{$step_name,$application_name}"
+							}
+						],
+						"display_type": "line"
+					}
+				],
+				"markers": [
+					{
+						"label": " poor=7.3sec ",
+						"value": "y = 7300",
+						"display_type": "error dashed"
+					},
+					{
+						"label": " needs improvement=3.9sec ",
+						"value": "y = 3900",
+						"display_type": "warning dashed"
+					}
+				]
+			},
+			"layout": {
+				"x": 0,
+				"y": 8,
+				"width": 4,
+				"height": 2
+			}
+		},
+		{
+			"id": 7806906792616029,
+			"definition": {
+				"title": "Mainthread Work Breakdown [$application_name]",
+				"show_legend": false,
+				"type": "timeseries",
+				"requests": [
+					{
+						"formulas": [
+							{
+								"formula": "query1",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							}
+						],
+						"response_format": "timeseries",
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.mainthread_work_breakdown{$step_name,$application_name}"
+							}
+						],
+						"display_type": "line"
+					}
+				]
+			},
+			"layout": {
+				"x": 4,
+				"y": 8,
+				"width": 4,
+				"height": 2
+			}
+		},
+		{
+			"id": 4752054798133965,
+			"definition": {
+				"title": "Network Requests [$application_name]",
+				"show_legend": false,
+				"type": "timeseries",
+				"requests": [
+					{
+						"formulas": [
+							{
+								"formula": "query1",
+								"number_format": {
+									"unit": {
+										"type": "canonical_unit",
+										"unit_name": "millisecond"
+									}
+								}
+							}
+						],
+						"response_format": "timeseries",
+						"queries": [
+							{
+								"data_source": "metrics",
+								"name": "query1",
+								"query": "avg:website.performance.network_requests{$step_name,$application_name}"
+							}
+						],
+						"display_type": "line"
+					}
+				]
+			},
+			"layout": {
+				"x": 8,
+				"y": 8,
+				"width": 4,
+				"height": 2
+			}
+		}
+	],
+	"template_variables": [
+		{
+			"name": "application_name",
+			"prefix": "application_name",
+			"available_values": [],
+			"default": "*"
+		},
+		{
+			"name": "step_name",
+			"prefix": "step_name",
+			"available_values": [],
+			"default": "*"
+		}
+	],
+	"layout_type": "ordered",
+	"notify_list": [],
+	"reflow_type": "fixed"
+}
